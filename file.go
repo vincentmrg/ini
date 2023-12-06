@@ -351,8 +351,6 @@ func (f *File) writeToBuffer(indent string) (*bytes.Buffer, error) {
 			for i := range lines {
 				if lines[i][0] != '#' && lines[i][0] != ';' {
 					lines[i] = "; " + lines[i]
-				} else {
-					lines[i] = lines[i][:1] + " " + strings.TrimSpace(lines[i][1:])
 				}
 
 				if _, err := buf.WriteString(lines[i] + LineBreak); err != nil {
@@ -421,8 +419,6 @@ func (f *File) writeToBuffer(indent string) (*bytes.Buffer, error) {
 				for i := range lines {
 					if lines[i][0] != '#' && lines[i][0] != ';' {
 						lines[i] = "; " + strings.TrimSpace(lines[i])
-					} else {
-						lines[i] = lines[i][:1] + " " + strings.TrimSpace(lines[i][1:])
 					}
 
 					if _, err := buf.WriteString(lines[i] + LineBreak); err != nil {
